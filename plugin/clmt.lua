@@ -21,7 +21,7 @@ vim.api.nvim_create_autocmd({ 'CmdlineEnter' }, {
 		vim.keymap.set('c', '<C-x>', function()
 			vim.o.ignorecase = not vim.o.ignorecase
 			update_stl()
-			vim.cmd('redrawstatus')
+			vim.cmd('redraw')
 		end)
 	end
 })
