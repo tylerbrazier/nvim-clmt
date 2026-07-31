@@ -39,7 +39,9 @@ vim.api.nvim_create_autocmd({ 'CmdlineLeave' }, {
 -- easier to type / than ctrl-d
 vim.keymap.set('c', '/', function()
 	return (
-		vim.fn.wildmenumode() == 1
-		and vim.fn.getcmdline():sub(-1) == '/'
+		vim.fn.getcmdline():sub(-1) == '/'
+		and vim.tbl_contains({
+			'file', 'file_in_path', 'dir', 'dir_in_path',
+		}, vim.fn.getcmdcompltype())
 	) and '<C-d>' or '/'
 end, { expr = true })
